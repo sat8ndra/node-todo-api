@@ -5,8 +5,6 @@ const {Todo} = require('./../server/models/todo');
 
 const {User} = require('./../server/models/user');
 
-
-
 // var id = '5c1414985cea0744089498ac';
 //
 // if (!ObjectID.isValid(id)) {
