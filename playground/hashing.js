@@ -1,15 +1,32 @@
 const {SHA256} = require('crypto-js');
 const jwt = require('jsonwebtoken');
 
-var data = {
-  id: 10
-};
+const bcrypt = require('bcryptjs');
 
-var token = jwt.sign(data, '123abc');
-console.log(token);
+var password = '123abc!';
 
-var decoded = jwt.verify(token, '123abc');
-console.log('decoded', decoded);
+//suppose password is abc123 then salted password would be like abc1234f6s8df456sd5f
+// bcrypt.genSalt(10, (err, salt) => {          // callback function is passed here in genSalt
+//   bcrypt.hash(password, salt, (err, hash) => {        // another callback function
+//     console.log(hash);                                // first created salt then hash the password then printed the hash
+//   });
+// });
+
+var hashedPassword = '$2a$10$K9oj6lJ7xCrZw77D/vx7R.a5CCCCmMr93d48N8.ZUi/QywLBFDSMy';
+
+bcrypt.compare(password, hashedPassword, (err, res) => {
+  console.log(res);
+});
+
+// var data = {
+//   id: 10
+// };
+//
+// var token = jwt.sign(data, '123abc');
+// console.log(token);
+//
+// var decoded = jwt.verify(token, '123abc');
+// console.log('decoded', decoded);
 
 // var message = 'I am user number 3';
 // var hash = SHA256(message).toString();
