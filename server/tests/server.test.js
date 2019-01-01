@@ -13,7 +13,6 @@ beforeEach(populateTodos);
 describe('POST /todos', () => {
   it('should create a new todo', (done) => {
     var text = 'Test todo text';
-
     request(app)
       .post('/todos')
       .set('x-auth', users[0].tokens[0].token)
@@ -26,7 +25,6 @@ describe('POST /todos', () => {
         if (err) {
           return done(err);
         }
-
         Todo.find({text}).then((todos) => {
           expect(todos.length).toBe(1);
           expect(todos[0].text).toBe(text);
@@ -45,14 +43,12 @@ describe('POST /todos', () => {
         if (err) {
           return done(err);
         }
-
         Todo.find().then((todos) => {
           expect(todos.length).toBe(2);
           done();
         }).catch((e) => done(e));
       });
   });
-
 });
 
 describe('GET /todos', () => {
